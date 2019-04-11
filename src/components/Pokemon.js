@@ -5,15 +5,17 @@ const Pokemon = (props) => {
 
   // props.getPokemonStats(props.pokemon.name)
   return(
-    <>
+    <div class="blorange">
     {/* <p>Pokedex entry: {props.pokemon.index}</p> */}
-    <h3>{props.pokemon.name}</h3>
+    <h3>{props.pokemon[0]}</h3>
+    <img src={props.pokemon[3]}/>
+    <img src={props.pokemon[6]}/>
 
 
 
 
 
-  </>
+  </div>
   )
 }
 

@@ -28,14 +28,30 @@ class PokemonContainer extends Component {
   }
   handlePokemonSelected(index) {
     // console.log("url:", url );
-    const selectedPokemon = this.state.pokemon[index];
-    this.setState({currentPokemon: selectedPokemon})
+    // const selectedPokemon = this.state.pokemon[index];
+    // this.setState({currentPokemon: selectedPokemon})
+    let pokedex = parseInt(index) + 1;
+    this.loadOnePokemon('https://pokeapi.co/api/v2/pokemon/' + pokedex + '/');
+  }
+
+  loadOnePokemon(url) {
+    const request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.onload = () => {
+      if (request.status === 200) {
+        const jsonString = request.responseText;
+        const data = JSON.parse(jsonString);
+        const info = [data.name, data.height, data.weight, data.sprites.front_default, data.types, data.moves, data.sprites.front_shiny]
+        this.setState({currentPokemon: info});
+      }
+    }
+    request.send();
   }
 
   render() {
     return (
-      <>
-      <h2>Pokemon Container</h2>
+      <div>
+      <h2>Pokemon!</h2>
       <PokemonSelector
         pokemon={this.state.pokemon}
         onPokemonSelected={this.handlePokemonSelected}
@@ -43,7 +59,7 @@ class PokemonContainer extends Component {
       <Pokemon
         pokemon ={this.state.currentPokemon}
       />
-    </>
+    </div>
     )
   }
 }
