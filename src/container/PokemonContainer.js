@@ -41,7 +41,7 @@ class PokemonContainer extends Component {
       if (request.status === 200) {
         const jsonString = request.responseText;
         const data = JSON.parse(jsonString);
-        const info = [data.name, data.height, data.weight, data.sprites.front_default, data.types, data.moves, data.sprites.front_shiny]
+        const info = [data.name, data.height, data.weight, data.sprites.front_default, data.types, data.moves, data.sprites.front_shiny, data.id]
         this.setState({currentPokemon: info});
       }
     }

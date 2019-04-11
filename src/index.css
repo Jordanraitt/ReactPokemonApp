@@ -18,8 +18,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+li {
+  text-align: center;
+  list-style-type: none;
+}
 
-.blorange {
+.border {
   background-color: #FFFFFF8C;
   border: 4px solid black;
   margin: 10px;
